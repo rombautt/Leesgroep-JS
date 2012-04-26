@@ -1,0 +1,54 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+
+        var all = [];
+
+        function doPrime(rEnd) {
+
+            for (var i = 1; i <= rEnd; i++) {
+                all[i] = true;
+            }
+
+            for (var i = 2; i <= rEnd; i++) {
+                if (all[i] === true) {
+                    schrapVeelVoudenVanafKwadraatTot(i, rEnd);
+                }
+            }
+
+            for (var i = 0; i < rEnd; i++) {
+                if (all[i] === true) {
+                    alert(i);
+                }
+            }
+
+        }
+
+        function schrapVeelVoudenVanafKwadraatTot(c, end) {
+            var multiplicator = c;
+            var cursor = c *  multiplicator;
+            while (cursor <= end) {
+                all[cursor] = false;
+                multiplicator++;
+                cursor = c * multiplicator;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+<input type="text" id="rBegin">
+<input type="text" id="rEnd">
+<input type="button" value="bereken" onclick="doPrime(30)">
+
+<span id="result">
+
+
+</span>
+
+
+</body>
+</html>

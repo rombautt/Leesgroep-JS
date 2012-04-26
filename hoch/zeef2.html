@@ -1,0 +1,66 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+
+
+        function sieve(rEnd) {
+
+            return {
+                all:[],
+
+                calculate:function () {
+
+                    for (var i = 1; i <= rEnd; i++) {
+                        this.all[i] = true;
+                    }
+
+                    for (var i = 2; i <= rEnd; i++) {
+                        if (this.all[i] === true) {
+                            this.schrapVeelVoudenVanafKwadraatTot(i, rEnd);
+                        }
+                    }
+
+                    return this;
+                },
+
+                schrapVeelVoudenVanafKwadraatTot:function (c, end) {
+                    var multiplicator = c;
+                    var cursor = c * multiplicator;
+                    while (cursor <= end) {
+                        this.all[cursor] = false;
+                        multiplicator++;
+                        cursor = c * multiplicator;
+                    }
+                },
+
+                doAlert: function(){
+                    var resultString  = '';
+                    for (var i = 0; i < rEnd; i++) {
+                        if (this.all[i] === true) {
+                           resultString = resultString.concat(i+',')
+                        }
+                    }
+                    alert(resultString);
+                }
+
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+<input type="text" id="rBegin">
+<input type="text" id="rEnd">
+<input type="button" value="bereken" onclick="sieve(30).calculate().doAlert()">
+
+<span id="result">
+
+
+</span>
+
+
+</body>
+</html>
